@@ -1,7 +1,7 @@
 :root {
   font-size: 150%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  background-color: #222;
+  background-color: #181818;
   color: white;
 
   --link: #009FEC;
@@ -20,6 +20,9 @@ a:hover {
   text-decoration: underline;
 }
 
+nav {
+  --link: white;
+}
 main {
   line-height: 1.4;
 }
@@ -33,6 +36,9 @@ dt { font-weight: bold; }
 .mx-auto { margin-left: auto; margin-right: auto }
 .pt-8 { padding-top: 2rem }
 .pb-8 { padding-bottom: 2rem }
+.space-y-1 > * + * { margin-top: 0.25rem }
 .space-y-4 > * + * { margin-top: 1rem }
 .text-center { text-align: center }
+.text-sm { font-size: 0.875rem }
 .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace }
+.font-bold { font-weight: bold }

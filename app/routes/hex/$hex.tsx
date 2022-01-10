@@ -75,7 +75,10 @@ export default function HexColor() {
               <dd className="font-mono">b: {srgb[2].toFixed(0)}</dd>
             </div>
           </dl>
-          <img width={600} height={315} src={ogImageURL} className="block mx-auto" />
+          <figure className="text-center space-y-1">
+            <img width={600} height={315} src={ogImageURL} className="block mx-auto" />
+            <figcaption className="text-sm">Image generated with <a href="https://littleeagle.io/">Little Eagle Images</a></figcaption>
+          </figure>
         </article>
       </main>
     </>

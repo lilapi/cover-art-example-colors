@@ -2,7 +2,6 @@ import { useLoaderData, redirect, Link } from "remix";
 import type { ActionFunction, LoaderFunction, LinksFunction, MetaFunction } from "remix";
 import chroma from 'chroma-js';
 import { littleEagleImagesURL } from "@littleeagle/images-node";
-import { PrimaryNav } from "~/landmarks/PrimaryNav";
 import { ColorSwatch } from "~/primitives/ColorSwatch";
 
 export const loader: LoaderFunction = ({ params }) => {
@@ -38,10 +37,9 @@ export const meta: MetaFunction = ({ data }) => ({
 export default function Index() {
   return (
     <>
-      <PrimaryNav />
-      <main>
+      <main className="pt-8">
         <article className="mx-auto">
-          <h1>Remix Colors</h1>
+          <h1>Little Eagle Colors</h1>
           <div style={{ display: "grid", gridTemplateColumns: 'repeat(auto-fit, 100px)', gap: '1rem' }} className="pt-8 pb-8">
             {/* {chroma.scale(Array.from({ length: 3 }, () => chroma.random())).mode('lch').colors(32).map(hex =>
               <Link to={`/hex/${hex.slice(1)}`}><ColorSwatch key={hex} size={100} fill={hex} /></Link>
@@ -50,6 +48,9 @@ export default function Index() {
               <Link to={`/hex/${hex.slice(1)}`}><ColorSwatch key={hex} size={100} fill={hex} /></Link>
             )}
           </div>
+        </article>
+        <article className="mx-auto">
+          <h2>There are 16.78 million sRGB colors. We have a page for each one, using Remix’s dynamic routes.</h2>
         </article>
       </main>
     </>
