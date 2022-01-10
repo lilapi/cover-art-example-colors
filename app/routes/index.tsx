@@ -6,29 +6,19 @@ import { ColorSwatch } from "~/primitives/ColorSwatch";
 import { GitHubIcon } from "~/primitives/SocialIcons";
 
 export const loader: LoaderFunction = ({ params }) => {
-  const hex = '00b4ff';
-
-  const color = chroma(hex);
-  const cssColor = color.hex();
-  const dark = color.luminance(0, 'lab');
-  const light = color.luminance(1, 'lab');
-  const opposite = color.luminance() >= 0.5 ? dark : light;
-  const srgb = color.rgb();
-  const lab = color.lab();
-
   const ogImageURL = littleEagleImagesURL({
     id: process.env.LITTLE_EAGLE_PROJECT_KEY!,
     secret: process.env.LITTLE_EAGLE_PROJECT_SECRET!
   }, {
     template: 'overlay',
-    backgroundColor: cssColor,
+    backgroundColor: '#5A00D0',
     text: [
-      { text: 'Little Eagle Colors', size: 16, color: 'white' },
-      { text: cssColor, size: 48, color: 'white' }
+      { text: '16.8 million colors = 16.8 million pages', size: 24, color: '#ffe351' },
+      { text: 'Dynamic routes with Remix + dynamic images with Little Eagle', size: 42, color: 'white' },
     ],
   });
 
-  return { cssColor, oppositeHex: opposite.hex(), ogImageURL: ogImageURL.toString(), srgb, lab };
+  return { ogImageURL: ogImageURL.toString() };
 };
 
 export const meta: MetaFunction = ({ data }) => ({
@@ -53,15 +43,15 @@ export default function Index() {
           </header>
           <div style={{ display: "grid", gridTemplateColumns: `repeat(auto-fit, ${swatchSize}px)`, gap: '1rem' }} className="pt-8 pb-8">
             {/* {chroma.scale(Array.from({ length: 3 }, () => chroma.random())).mode('lch').colors(32).map(hex =>
-              <Link to={`/hex/${hex.slice(1)}`}><ColorSwatch key={hex} size={100} fill={hex} /></Link>
+              <Link key={hex} to={`/hex/${hex.slice(1)}`}><ColorSwatch size={100} fill={hex} /></Link>
             )} */}
             {chroma.scale(['#fafa6e', '#2A4858', '#009fec', '#D53EFF', '#FF6C63', '#00DD00', '#384084', '#B40000', '#004100']).mode('lch').colors(32).map(hex =>
-              <Link to={`/hex/${hex.slice(1)}`}><ColorSwatch key={hex} size={swatchSize} fill={hex} /></Link>
+              <Link key={hex} to={`/hex/${hex.slice(1)}`}><ColorSwatch size={swatchSize} fill={hex} /></Link>
             )}
           </div>
         </article>
         <article className="mx-auto">
-          <h2>There are 16.78 million sRGB colors. We have a page for each one, using Remix’s dynamic routes.</h2>
+          <h2>There are 16.8 million sRGB colors. We have a page for each one, using Remix’s dynamic routes.</h2>
         </article>
       </main>
     </>
