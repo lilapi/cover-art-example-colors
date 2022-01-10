@@ -33,6 +33,9 @@ article {
 dt { font-weight: bold; }
 
 .block { display: block }
+.flex { display: flex }
+.items-center { align-items: center }
+.items-baseline { align-items: baseline }
 .mx-auto { margin-left: auto; margin-right: auto }
 .pt-8 { padding-top: 2rem }
 .pb-8 { padding-bottom: 2rem }

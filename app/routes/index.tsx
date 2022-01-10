@@ -3,6 +3,7 @@ import type { ActionFunction, LoaderFunction, LinksFunction, MetaFunction } from
 import chroma from 'chroma-js';
 import { littleEagleImagesURL } from "@littleeagle/images-node";
 import { ColorSwatch } from "~/primitives/ColorSwatch";
+import { GitHubIcon } from "~/primitives/SocialIcons";
 
 export const loader: LoaderFunction = ({ params }) => {
   const hex = '00b4ff';
@@ -34,18 +35,28 @@ export const meta: MetaFunction = ({ data }) => ({
   "og:image": data.ogImageURL
 });
 
+const swatchSize = 111;
+
 export default function Index() {
   return (
     <>
-      <main className="pt-8">
+      <main className="pt-8 pb-8">
         <article className="mx-auto">
-          <h1>Little Eagle Colors</h1>
-          <div style={{ display: "grid", gridTemplateColumns: 'repeat(auto-fit, 100px)', gap: '1rem' }} className="pt-8 pb-8">
+          <header className="flex items-baseline">
+            <h1>Little Eagle Colors</h1>
+
+            <div className="mx-auto" />
+
+            <a href="http://github.com/littleeagleio/little-eagle-remix-colors" style={{ color: 'white' }}>
+              <GitHubIcon width={32} height={32} />
+            </a>
+          </header>
+          <div style={{ display: "grid", gridTemplateColumns: `repeat(auto-fit, ${swatchSize}px)`, gap: '1rem' }} className="pt-8 pb-8">
             {/* {chroma.scale(Array.from({ length: 3 }, () => chroma.random())).mode('lch').colors(32).map(hex =>
               <Link to={`/hex/${hex.slice(1)}`}><ColorSwatch key={hex} size={100} fill={hex} /></Link>
             )} */}
             {chroma.scale(['#fafa6e', '#2A4858', '#009fec', '#D53EFF', '#FF6C63', '#00DD00', '#384084', '#B40000', '#004100']).mode('lch').colors(32).map(hex =>
-              <Link to={`/hex/${hex.slice(1)}`}><ColorSwatch key={hex} size={100} fill={hex} /></Link>
+              <Link to={`/hex/${hex.slice(1)}`}><ColorSwatch key={hex} size={swatchSize} fill={hex} /></Link>
             )}
           </div>
         </article>
