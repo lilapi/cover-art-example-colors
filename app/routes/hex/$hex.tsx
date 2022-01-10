@@ -27,7 +27,7 @@ export const loader: LoaderFunction = ({ params }) => {
     template: 'overlay',
     backgroundColor: cssColor,
     text: [
-      { text: 'Little Eagle Color', size: 16, color: 'white' },
+      { text: 'Little Eagle Colors', size: 16, color: 'white' },
       { text: cssColor, size: 48, color: 'white' }
     ],
   });
