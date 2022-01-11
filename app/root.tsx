@@ -11,7 +11,7 @@ import globalCSS from "~/global.css";
 
 export const meta: MetaFunction = () => {
   return {
-    title: "New Remix App",
+    title: "Little Eagle Colors",
     "color-scheme": "dark"
   };
 };
