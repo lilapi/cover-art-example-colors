@@ -44,6 +44,7 @@ export const action: ActionFunction = ({ params }) => {
 export const meta: MetaFunction = ({ data }) => ({
   "og:type": "article",
   "og:title": `Hex Color ${data.cssColor}`,
+  "og:description": `rgb(${data.srgb.join(', ')}) lab(${data.lab.map((n: number) => n.toFixed(3)).join(', ')})`,
   "og:image": data.ogImageURL,
   "twitter:card": "summary_large_image"
 });
