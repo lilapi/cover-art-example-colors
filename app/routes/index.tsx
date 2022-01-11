@@ -54,7 +54,7 @@ export default function Index() {
           </div>
         </article>
         <article className="mx-auto">
-          <h2>There are 16.8 million sRGB colors. We have a page for each one, using Remix’s dynamic routes. And a social image generated for each one, using <a href="https://littleeagle.io">Little Eagle Images</a>.</h2>
+          <h2>There are 16.8 million sRGB colors. We have a page for each one, using Remix’s dynamic routes. And a link preview image generated for each one, using <a href="https://littleeagle.io">Little Eagle Images</a>.</h2>
         </article>
       </main>
     </>
