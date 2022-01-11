@@ -22,6 +22,8 @@ export const loader: LoaderFunction = ({ params }) => {
 };
 
 export const meta: MetaFunction = ({ data }) => ({
+  "og:type": "website",
+  "og:title": "Little Eagle Colors",
   "og:image": data.ogImageURL
 });
 
