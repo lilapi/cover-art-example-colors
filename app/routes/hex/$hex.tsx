@@ -44,7 +44,8 @@ export const action: ActionFunction = ({ params }) => {
 export const meta: MetaFunction = ({ data }) => ({
   "og:type": "article",
   "og:title": `Hex Color ${data.cssColor}`,
-  "og:image": data.ogImageURL
+  "og:image": data.ogImageURL,
+  "twitter:card": "summary_large_image"
 });
 
 // export function links(): ReturnType<LinksFunction> {

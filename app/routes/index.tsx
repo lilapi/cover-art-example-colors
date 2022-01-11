@@ -24,7 +24,8 @@ export const loader: LoaderFunction = ({ params }) => {
 export const meta: MetaFunction = ({ data }) => ({
   "og:type": "website",
   "og:title": "Little Eagle Colors",
-  "og:image": data.ogImageURL
+  "og:image": data.ogImageURL,
+  "twitter:card": "summary_large_image"
 });
 
 const swatchSize = 111;
