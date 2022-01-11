@@ -42,6 +42,7 @@ export const action: ActionFunction = ({ params }) => {
 };
 
 export const meta: MetaFunction = ({ data }) => ({
+  "og:title": `Hex Color ${data.cssColor}`,
   "og:image": data.ogImageURL
 });
 
