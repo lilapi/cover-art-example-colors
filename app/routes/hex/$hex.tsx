@@ -1,7 +1,7 @@
 import { useLoaderData, redirect } from "remix";
 import type { ActionFunction, LoaderFunction, LinksFunction, MetaFunction } from "remix";
 import chroma from 'chroma-js';
-import { littleEagleImagesURL } from "@littleeagle/images-node";
+import { littleEagleImagesURL, gitHubTemplateURL } from "@littleeagle/images-node";
 import { ColorSwatch } from "~/primitives/ColorSwatch";
 import { PrimaryNav } from "~/landmarks/PrimaryNav";
 
@@ -22,17 +22,26 @@ export const loader: LoaderFunction = ({ params }) => {
   const srgb = color.rgb();
   const lab = color.lab();
 
-  const ogImageURL = littleEagleImagesURL({
-    id: process.env.LITTLE_EAGLE_PROJECT_KEY!,
-    secret: process.env.LITTLE_EAGLE_PROJECT_SECRET!
-  }, {
-    template: 'overlay',
+  const ogImageURL = gitHubTemplateURL({
+    username: 'remix-run',
     backgroundColor: cssColor,
     text: [
       { text: 'Little Eagle Colors', size: 16, color: 'white' },
       { text: cssColor, size: 48, color: 'white' }
-    ],
+    ]
   });
+
+  // const ogImageURL = littleEagleImagesURL({
+  //   id: process.env.LITTLE_EAGLE_PROJECT_KEY!,
+  //   secret: process.env.LITTLE_EAGLE_PROJECT_SECRET!
+  // }, {
+  //   template: 'overlay',
+  //   backgroundColor: cssColor,
+  //   text: [
+  //     { text: 'Little Eagle Colors', size: 16, color: 'white' },
+  //     { text: cssColor, size: 48, color: 'white' }
+  //   ],
+  // });
 
   return { cssColor, oppositeHex: opposite.hex(), ogImageURL: ogImageURL.toString(), srgb, lab };
 };
