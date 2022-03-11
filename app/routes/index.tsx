@@ -4,6 +4,7 @@ import chroma from 'chroma-js';
 import { gitHubTemplateURL } from "@littleeagle/images-node";
 import { ColorSwatch } from "~/primitives/ColorSwatch";
 import { GitHubIcon } from "~/primitives/SocialIcons";
+import { PrimaryNav } from "~/landmarks/PrimaryNav";
 
 export const loader: LoaderFunction = ({ params }) => {
   const ogImageURL = gitHubTemplateURL({
@@ -32,17 +33,11 @@ const swatchSize = 111;
 export default function Index() {
   return (
     <>
-      <main className="pt-8 pb-8">
+      <header role="banner" className="pt-8">
+        <PrimaryNav />
+      </header>
+      <main className="pb-8">
         <article className="mx-auto">
-          <header className="flex items-baseline">
-            <h1>Little Eagle Colors</h1>
-
-            <div className="mx-auto" />
-
-            <a href="http://github.com/littleeagleio/little-eagle-remix-colors" style={{ color: 'white' }}>
-              <GitHubIcon width={32} height={32} />
-            </a>
-          </header>
           <div style={{ display: "grid", gridTemplateColumns: `repeat(auto-fit, ${swatchSize}px)`, gap: '1rem' }} className="pt-8 pb-8">
             {/* {chroma.scale(Array.from({ length: 3 }, () => chroma.random())).mode('lch').colors(32).map(hex =>
               <Link key={hex} to={`/hex/${hex.slice(1)}`}><ColorSwatch size={100} fill={hex} /></Link>
@@ -53,7 +48,7 @@ export default function Index() {
           </div>
         </article>
         <article className="mx-auto">
-          <h2>There are 16.8 million sRGB colors. We have a page for each one, using Remix’s dynamic routes. And a link preview image generated for each one, using <a href="https://littleeagle.io">Little Eagle Images</a>.</h2>
+          <h2>There are 16.8 million sRGB colors. We have a page for every single one, using Remix’s dynamic routes. And a link preview image generated for each one, using <a href="https://littleeagle.io">Little Eagle Images</a>.</h2>
         </article>
       </main>
     </>

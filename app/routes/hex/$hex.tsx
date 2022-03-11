@@ -63,7 +63,9 @@ export default function HexColor() {
 
   return (
     <>
-      <PrimaryNav />
+      <header role="banner" className="pt-8">
+        <PrimaryNav />
+      </header>
       <main>
         <article className="pt-8 pb-8 mx-auto space-y-4">
           <h1 style={{ textAlign: 'center' }}>Hex Color {cssColor}</h1>
