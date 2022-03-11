@@ -1,9 +1,16 @@
 import { useLoaderData, redirect } from "remix";
 import type { ActionFunction, LoaderFunction, LinksFunction, MetaFunction } from "remix";
 import chroma from 'chroma-js';
-import { littleEagleImagesURL, gitHubTemplateURL } from "@littleeagle/images-node";
+import { gitHubTemplateURL } from "@littleeagle/images-node";
 import { ColorSwatch } from "~/primitives/ColorSwatch";
 import { PrimaryNav } from "~/landmarks/PrimaryNav";
+
+function formatRGB(rgb: [number, number, number]) {
+  return `rgb(${rgb.join(', ')})`;
+}
+function formatLab(lab: [number, number, number]) {
+  return `lab(${lab.map((n: number, index) => n.toFixed(3) + (index === 0 ? "%" : "")).join(' ')})`;
+}
 
 export const loader: LoaderFunction = ({ params }) => {
   const { hex = 'fff' } = params;
@@ -26,22 +33,11 @@ export const loader: LoaderFunction = ({ params }) => {
     username: 'remix-run',
     backgroundColor: cssColor,
     text: [
-      { text: 'Little Eagle Colors', size: 16, color: 'white' },
-      { text: cssColor, size: 48, color: 'white' }
+      { text: cssColor, size: 48, color: opposite.hex() },
+      { text: formatRGB(srgb), size: 24, color: opposite.hex() },
+      { text: formatLab(lab), size: 24, color: opposite.hex() },
     ]
   });
-
-  // const ogImageURL = littleEagleImagesURL({
-  //   id: process.env.LITTLE_EAGLE_PROJECT_KEY!,
-  //   secret: process.env.LITTLE_EAGLE_PROJECT_SECRET!
-  // }, {
-  //   template: 'overlay',
-  //   backgroundColor: cssColor,
-  //   text: [
-  //     { text: 'Little Eagle Colors', size: 16, color: 'white' },
-  //     { text: cssColor, size: 48, color: 'white' }
-  //   ],
-  // });
 
   return { cssColor, oppositeHex: opposite.hex(), ogImageURL: ogImageURL.toString(), srgb, lab };
 };
@@ -53,7 +49,7 @@ export const action: ActionFunction = ({ params }) => {
 export const meta: MetaFunction = ({ data }) => ({
   "og:type": "article",
   "og:title": `Hex Color ${data.cssColor}`,
-  "og:description": `rgb(${data.srgb.join(', ')}) lab(${data.lab.map((n: number) => n.toFixed(3)).join(', ')})`,
+  "og:description": `${formatRGB(data.srgb)} ${formatLab(data.lab)}`,
   "og:image": data.ogImageURL,
   "twitter:card": "summary_large_image"
 });
@@ -88,9 +84,9 @@ export default function HexColor() {
               <dd className="font-mono">b: {srgb[2].toFixed(0)}</dd>
             </div>
           </dl>
-          <figure className="text-center space-y-1">
+          <figure className="pt-4 text-center space-y-1">
             <img width={600} height={315} src={ogImageURL} className="block mx-auto" />
-            <figcaption className="text-sm">Image generated with <a href="https://littleeagle.io/">Little Eagle Images</a></figcaption>
+            <figcaption className="text-xs">Image generated with <a href="https://littleeagle.io/">Little Eagle Images</a></figcaption>
           </figure>
         </article>
       </main>

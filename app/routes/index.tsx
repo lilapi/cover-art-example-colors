@@ -1,21 +1,20 @@
 import { useLoaderData, redirect, Link } from "remix";
 import type { ActionFunction, LoaderFunction, LinksFunction, MetaFunction } from "remix";
 import chroma from 'chroma-js';
-import { littleEagleImagesURL } from "@littleeagle/images-node";
+import { gitHubTemplateURL } from "@littleeagle/images-node";
 import { ColorSwatch } from "~/primitives/ColorSwatch";
 import { GitHubIcon } from "~/primitives/SocialIcons";
 
 export const loader: LoaderFunction = ({ params }) => {
-  const ogImageURL = littleEagleImagesURL({
-    id: process.env.LITTLE_EAGLE_PROJECT_KEY!,
-    secret: process.env.LITTLE_EAGLE_PROJECT_SECRET!
-  }, {
-    template: 'overlay',
-    backgroundColor: '#5A00D0',
+  const ogImageURL = gitHubTemplateURL({
+    username: 'remix-run',
+    backgroundColor: '#003C8A',
     text: [
-      { text: '16.8 million colors = 16.8 million pages', size: 24, color: '#ffe351' },
-      { text: 'Dynamic routes with Remix + dynamic images with Little Eagle', size: 42, color: 'white' },
+      { text: '16.8 million colors -> 16.8 million pages!', size: 24, color: 'white' },
+      { text: 'Dynamic Remix routes + dynamic Little Eagle images', size: 34, color: 'white' },
     ],
+    authorName: 'Remix + Little Eagle Images',
+    website: 'little-eagle-remix-colors.vercel.app'
   });
 
   return { ogImageURL: ogImageURL.toString() };
