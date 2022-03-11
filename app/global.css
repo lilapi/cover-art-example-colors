@@ -39,6 +39,7 @@ dt { font-weight: bold; }
 .mx-auto { margin-left: auto; margin-right: auto }
 .pt-8 { padding-top: 2rem }
 .pb-8 { padding-bottom: 2rem }
+.px-2 { padding-inline: 0.5rem }
 .space-y-1 > * + * { margin-top: 0.25rem }
 .space-y-4 > * + * { margin-top: 1rem }
 .text-center { text-align: center }
