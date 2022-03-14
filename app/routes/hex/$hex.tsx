@@ -36,7 +36,9 @@ export const loader: LoaderFunction = ({ params }) => {
       { text: cssColor, size: 48, color: opposite.hex() },
       { text: formatRGB(srgb), size: 24, color: opposite.hex() },
       { text: formatLab(lab), size: 24, color: opposite.hex() },
-    ]
+    ],
+    authorName: 'Remix + Little Eagle Images',
+    website: 'little-eagle-remix-colors.vercel.app'
   });
 
   return { cssColor, oppositeHex: opposite.hex(), ogImageURL: ogImageURL.toString(), srgb, lab };
